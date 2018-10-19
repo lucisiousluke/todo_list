@@ -120,11 +120,11 @@ let todoList = {
           let changedTextValue = prompt("Please enter new text:", selectedTodoText);
           handlers.changeTodo(selectedTodoText, changedTextValue);
         }
-        if (elementChecked.childNodes[3].checked === true) {
+        if (elementChecked.childNodes[3].checked) {
           // handlers.toggleCompleted(parseInt(elementChecked.parentNode.id));
-          console.log(elementChecked.childNodes[3].checked);
+          elementChecked.style.background = 'red';
         } else {
-          console.log('item is not checked');
+          elementChecked.style.background = 'transparent';
         }
       });
     }
