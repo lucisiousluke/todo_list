@@ -1,4 +1,4 @@
-var todoList = {
+let todoList = {
     todos: [],
     addTodo: function(todoText) {
       this.todos.push({
@@ -13,12 +13,12 @@ var todoList = {
       this.todos.splice(position, 1);
     },
     toggleCompleted: function(position) {
-      var todo = this.todos[position];
+      let todo = this.todos[position];
       todo.completed = elementChecked.childNodes[3].checked;
     },
     toggleAll: function() {
-      var totalTodos = this.todos.length;
-      var completedTodos = 0;
+      let totalTodos = this.todos.length;
+      let completedTodos = 0;
   
       // Get number of completed todos.
       this.todos.forEach(function(todo) {
@@ -39,9 +39,9 @@ var todoList = {
     }
   };
   
-  var handlers = {
+  let handlers = {
     addTodo: function() {
-      var addTodoTextInput = document.getElementById('addTodoTextInput');
+      let addTodoTextInput = document.getElementById('addTodoTextInput');
       todoList.addTodo(addTodoTextInput.value);
       addTodoTextInput.value = '';
       view.displayTodos();
@@ -64,13 +64,13 @@ var todoList = {
     }
   };
   
-  var view = {
+  let view = {
     displayTodos: function() {
-      var todosUl = document.querySelector('ul');
+      let todosUl = document.querySelector('ul');
       todosUl.innerHTML = '';
       todoList.todos.forEach(function(todo, position) {
-        var todoLi = document.createElement('li');
-        var todoTextWithCompletion = '';
+        let todoLi = document.createElement('li');
+        let todoTextWithCompletion = '';
   
         if (todo.completed === true) {
           todoTextWithCompletion = '(x) ' + todo.todoText;
@@ -90,34 +90,34 @@ var todoList = {
       }, this);
     },
     createDeleteButton: function() {
-      var deleteButton = document.createElement('button');
+      let deleteButton = document.createElement('button');
       deleteButton.textContent = 'Delete';
       deleteButton.className = 'deleteButton';
       return deleteButton;
     },
     createChangeButton: function() {
-      var changeButton = document.createElement('button');
+      let changeButton = document.createElement('button');
       changeButton.textContent = 'Change';
       changeButton.className = 'changeButton';
       return changeButton;
     },
     createCompleteButton: function() {
-      var completeButton = document.createElement('input');
+      let completeButton = document.createElement('input');
       completeButton.setAttribute("type", "checkbox");
       completeButton.className = 'todoComplete';
       return completeButton;
     },
     setUpEventListeners: function() {
-      var todosUl = document.querySelector('ul');
+      let todosUl = document.querySelector('ul');
       todosUl.addEventListener('click', function(event) {
-        var elementClicked = event.target;
-        var elementChecked = document.getElementById(parseInt(elementClicked.parentNode.id));
+        let elementClicked = event.target;
+        let elementChecked = document.getElementById(parseInt(elementClicked.parentNode.id));
         if (elementClicked.className === 'deleteButton') {
           handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
         }
         if (elementClicked.className === 'changeButton') {
-          var selectedTodoText = parseInt(elementClicked.parentNode.id);
-          var changedTextValue = prompt("Please enter new text:", selectedTodoText);
+          let selectedTodoText = parseInt(elementClicked.parentNode.id);
+          let changedTextValue = prompt("Please enter new text:", selectedTodoText);
           handlers.changeTodo(selectedTodoText, changedTextValue);
         }
         if (elementChecked.childNodes[3].checked === true) {
